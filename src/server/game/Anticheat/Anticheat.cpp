@@ -61,7 +61,7 @@ Anticheat::~Anticheat()
 
     m_mountTimer = 0;
     m_rootUpdTimer = 0;
-    m_flyhackTimer = 100;
+    m_flyhackTimer = 0;
     m_antiNoFallDmgTimer = 0;
     m_reloadModelsDisplayTimer = 0;
 
@@ -73,7 +73,7 @@ Anticheat::~Anticheat()
 // Anticheat System
 void Anticheat::update(uint32 p_time)
 {
-    if (m_flyhackTimer > 0)
+    if (m_flyhackTimer >= 0)
     {
         if (p_time >= m_flyhackTimer)
         {
@@ -616,4 +616,5 @@ void Anticheat::setReloadModelsDisplayTimer()
 {
     pPlayer->CastSpell(pPlayer, 54844, true);
     m_reloadModelsDisplayTimer = 500;
+    m_flyhackTimer = 3000;
 }
