@@ -770,6 +770,9 @@ void AchievementMgr::UpdateAchievementCriteria(AchievementCriteriaTypes type, ui
     for (AchievementCriteriaDBC const* achievementCriteria : achievementCriteriaList)
     {
         AchievementDBC const* achievement = sAchievementMgr->GetAchievement(achievementCriteria->AchievementID);
+        if (!achievement)
+            continue;
+
         if (!CanUpdateCriteria(achievementCriteria, achievement, miscValue1, miscValue2, ref))
             continue;
 
