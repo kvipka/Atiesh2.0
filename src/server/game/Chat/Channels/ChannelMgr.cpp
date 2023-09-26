@@ -153,6 +153,8 @@ void ChannelMgr::SaveToDB()
 Channel* ChannelMgr::GetSystemChannel(uint32 channelId, AreaTableDBC const* zoneEntry)
 {
     ChatChannelsDBC const* channelEntry = sDBCStoresMgr->GetChatChannelsDBC(channelId);
+    if (!channelEntry)
+        return nullptr;
     uint32 zoneId = zoneEntry ? zoneEntry->ID : 0;
     if (channelEntry->Flags & (CHANNEL_DBC_FLAG_GLOBAL | CHANNEL_DBC_FLAG_CITY_ONLY))
         zoneId = 0;
@@ -209,6 +211,8 @@ Channel* ChannelMgr::GetChannel(uint32 channelId, std::string const& name, Playe
     if (channelId) // builtin
     {
         ChatChannelsDBC const* channelEntry = sDBCStoresMgr->GetChatChannelsDBC(channelId);
+        if (!channelEntry)
+            return nullptr;
         uint32 zoneId = zoneEntry ? zoneEntry->ID : 0;
         if (channelEntry->Flags & (CHANNEL_DBC_FLAG_GLOBAL | CHANNEL_DBC_FLAG_CITY_ONLY))
             zoneId = 0;
@@ -251,6 +255,8 @@ Channel* ChannelMgr::GetChannel(uint32 channelId, std::string const& name, Playe
 void ChannelMgr::LeftChannel(uint32 channelId, AreaTableDBC const* zoneEntry)
 {
     ChatChannelsDBC const* channelEntry = sDBCStoresMgr->GetChatChannelsDBC(channelId);
+    if (!channelEntry)
+        return;
     uint32 zoneId = zoneEntry ? zoneEntry->ID : 0;
     if (channelEntry->Flags & (CHANNEL_DBC_FLAG_GLOBAL | CHANNEL_DBC_FLAG_CITY_ONLY))
         zoneId = 0;

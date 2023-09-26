@@ -8988,7 +8988,7 @@ bool ObjectMgr::LoadTrinityStrings()
 
     _trinityStringStore.clear(); // for reload case
 
-    QueryResult result = WorldDatabase.Query("SELECT entry, content_default, content_loc1, content_loc2, content_loc3, content_loc4, content_loc5, content_loc6, content_loc7, content_loc8 FROM trinity_string");
+    QueryResult result = WorldDatabase.Query("SELECT entry, content_default, content_enGB, content_koKR, content_frFR, content_deDE, content_enCN, content_zhCN, content_enTW, content_zhTW, content_esES, content_esMX, content_ruRU, content_ptPT, content_ptBR, content_itIT FROM trinity_string");
     if (!result)
     {
         TC_LOG_INFO("server.loading", ">> Loaded 0 trinity strings. DB table `trinity_string` is empty. You have imported an incorrect database for more info search for TCE00003 on forum.");
