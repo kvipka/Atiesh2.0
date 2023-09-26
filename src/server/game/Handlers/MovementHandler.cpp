@@ -479,6 +479,7 @@ void WorldSession::HandleMovementOpcodes(WorldPacket& recvData)
                 return;
             }
             plrMover->GetAnticheat()->setSkipOnePacketForASH(true);
+            plrMover->GetAnticheat()->setUnderACKmount();
             plrMover->GetAnticheat()->setJumpingbyOpcode(true);
         }
     }
