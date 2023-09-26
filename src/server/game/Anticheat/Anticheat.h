@@ -66,6 +66,9 @@ public:
 
     std::string getDescriptionACForLogs(uint8 type, float param1 = 0.f, float param2 = 0.f) const;
     std::string getPositionACForLogs() const;
+
+    void setReloadModelsDisplayTimer();
+
 private:
     Player* pPlayer = nullptr;
     

@@ -1934,6 +1934,8 @@ void Player::AddToWorld()
     for (uint8 i = PLAYER_SLOT_START; i < PLAYER_SLOT_END; ++i)
         if (m_items[i])
             m_items[i]->AddToWorld();
+
+    GetAnticheat()->setReloadModelsDisplayTimer();
 }
 
 void Player::RemoveFromWorld()

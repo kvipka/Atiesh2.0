@@ -61,7 +61,7 @@ Anticheat::~Anticheat()
 
     m_mountTimer = 0;
     m_rootUpdTimer = 0;
-    m_flyhackTimer = 0;
+    m_flyhackTimer = 100;
     m_antiNoFallDmgTimer = 0;
     m_reloadModelsDisplayTimer = 0;
 
@@ -610,4 +610,10 @@ std::string Anticheat::getPositionACForLogs() const
     }
 
     return fmt::format("Map: {} ({}) Area: {} ({}) Zone: {} XYZ: {} {} {}", pPlayer->GetMapId(), pPlayer->FindMap() ? pPlayer->FindMap()->GetMapName() : "Unknown", areaId, areaName.c_str(), zoneName.c_str(), pPlayer->GetPositionX(), pPlayer->GetPositionY(), pPlayer->GetPositionZ());
+}
+
+void Anticheat::setReloadModelsDisplayTimer()
+{
+    pPlayer->CastSpell(pPlayer, 54844, true);
+    m_reloadModelsDisplayTimer = 500;
 }
