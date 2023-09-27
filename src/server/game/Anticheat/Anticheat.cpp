@@ -239,8 +239,8 @@ void Anticheat::updateMovementInfo(MovementInfo const& movementInfo)
 
 bool Anticheat::checkOnFlyHack()
 {
-    //if (sWorld->isAreaDisabledForAC(GetAreaId()))
-    //    return true;
+    if (sWorld->isAreaIdDisabledForAC(pPlayer->GetAreaId()))
+        return true;
 
     if (isCanFlybyServer())
         return true;
@@ -277,9 +277,6 @@ bool Anticheat::checkOnFlyHack()
 
     if (pPlayer->HasUnitState(UNIT_STATE_IGNORE_ANTISPEEDHACK))
         return true;
-
-    //if (GetAreaId() == 4859) // Area: 4859 (Frozen Throne)
-    //    return true;
 
     if (underACKmount())
         return true;
