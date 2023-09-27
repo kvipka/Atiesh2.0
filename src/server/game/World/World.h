@@ -882,6 +882,9 @@ class TC_GAME_API World
         bool IsGuidWarning() { return _guidWarn; }
         bool IsGuidAlert() { return _guidAlert; }
 
+        void SetAreaIdExcludes(const std::string& areaIdExcludes);
+        bool isAreaIdDisabledForAC(uint32 areaId) const { return _areaIdExcludes.count(areaId); }
+
     protected:
         void _UpdateGameTime();
 
@@ -1001,6 +1004,8 @@ class TC_GAME_API World
         bool _guidAlert;
         uint32 _warnDiff;
         time_t _warnShutdownTime;
+
+        std::unordered_set<uint32> _areaIdExcludes;
 
     friend class debug_commandscript;
 };
